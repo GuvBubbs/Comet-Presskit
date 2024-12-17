@@ -1,15 +1,18 @@
-# Comet Press Kit
+# Presskit-3
 
-This repository contains the press kit website for Comet, a puzzle adventure game for the Playdate handheld gaming system. The press kit provides media professionals with comprehensive information, assets, and contact details about the game.
+A clean, responsive press kit template for games. This template provides a single-page website with all the essential elements needed for a game's press coverage.
 
-## 🎮 About Comet
+## 🚀 Quick Start
 
-Comet is a story-driven puzzle adventure where players take on the role of Stella, who must confront her fear of the dark to search for her missing brother. Using the Playdate's unique crank mechanic to control their lamp's light, players explore an island touched by stardust magic, solve puzzles, collect trinkets, and uncover the mysteries surrounding their brother's disappearance.
+1. Fork this repository
+2. Replace the example content in `index.html` with your game's information
+3. Add your images to the appropriate directories
+4. Deploy using GitHub Pages or your preferred hosting
 
-## 📁 Repository Structure
+## 📁 Structure
 
 ```
-comet-presskit-3/
+presskit-3/
 ├── images/
 │   ├── awards/      # Award badges and trophies
 │   ├── banner/      # Header banner images
@@ -19,77 +22,118 @@ comet-presskit-3/
 └── index.html       # Main press kit webpage
 ```
 
-## 🖼️ Image Assets
+## 🔧 Features
 
-The press kit includes various image assets:
-- Game logos (standard, transparent, 1-bit versions)
-- Gameplay screenshots and GIFs
-- Promotional artwork and key art
-- Award badges
-- Banner images
-
-All images are available for press use with proper attribution to Team Comet.
-
-## 🔧 Technical Details
-
-The press kit is built using:
-- HTML5
-- CSS3 (with responsive design)
-- JavaScript (for smooth scrolling and fixed navigation)
-- Font Awesome icons
-
-## 📱 Features
-
-- Responsive design that works across all device sizes
+### Navigation
 - Sticky navigation bar with smooth scrolling
-- Organized sections for easy access to information
-- Image gallery with responsive grid layout
-- Embedded video support for trailers
-- Comprehensive game information and team details
+- Automatically highlights current section
+- Mobile-responsive dropdown menu
 
-## 👥 Team
+### Image Management
+- Responsive image grid
+- Automatic thumbnail generation
+- Support for both static images and GIFs
+- Organized directory structure for different asset types
 
-- Donald Bubbins Fraser - Project / Design lead
-- Drew Loebach - Programming lead
-- Kirill - Level & Cutscene artist
-- Maria - Art lead
-- William Aryitey - Narrative lead
+### Layout
+- Two-column layout for desktop
+- Single-column responsive layout for mobile
+- Flexible grid system for screenshots and promotional images
 
-## 📫 Contact
+### Components
+- Factsheet section for key information
+- Embedded video support
+- Team member listings
+- Contact information with social links
+- Awards showcase
+- Additional links section
 
-For press inquiries:
-- Email: Comet@astrolabe.pro
-- Bluesky: [@guv-bubbs.bsky.social](https://bsky.app/profile/guv-bubbs.bsky.social)
-- Mastodon: [@Guv_Bubbs@mastodon.gamedev.place](https://mastodon.gamedev.place/@Guv_Bubbs)
-- Twitter: [@Guv_Bubbs](https://x.com/Guv_Bubbs)
+## 🎨 Customization
 
-## 🔗 Additional Links
+### Styling
+All styles are contained in the `<style>` tag within `index.html`. The CSS is organized into sections:
+- Base styles and resets
+- Layout components
+- Navigation styles
+- Grid systems
+- Media queries for responsiveness
 
-- [Official Playdate Store Page](https://play.date/games/comet/)
-- [Development Log](https://guv-bubbs.itch.io/comet/devlog)
+### Adding Sections
+1. Add a new section to the HTML:
+```html
+<section id="your-section">
+    <h2>Section Title</h2>
+    <div class="content">
+        <!-- Your content here -->
+    </div>
+</section>
+```
 
-## 🎯 Awards
+2. Add a navigation link:
+```html
+<a href="#your-section">Section Title</a>
+```
 
-- Winner: Most Anticipated Game 2024
-- Nominations:
-  - Most Anticipated Game 2023
-  - Most Anticipated Game 2022
+## 📱 Responsive Design
 
-## 📝 Usage
+The template includes breakpoints for:
+- Desktop (> 768px)
+- Tablet (480px - 768px)
+- Mobile (< 480px)
 
-To use this press kit:
-1. Clone the repository
-2. Open `index.html` in a web browser
-3. All assets are available for press use with proper attribution
+Key responsive features:
+- Collapsing navigation
+- Adjusting grid layouts
+- Scaling images
+- Reorganizing two-column layout
 
 ## 🛠️ Development
 
-To modify the press kit:
-1. Fork the repository
-2. Make your changes
-3. Test locally to ensure everything displays correctly
-4. Submit a pull request with your changes
+### Prerequisites
+- Basic understanding of HTML/CSS
+- Text editor
+- Web browser
+- GitHub account (for forking and deployment)
+
+### Local Development
+1. Clone the repository
+2. Open `index.html` in a browser
+3. Make changes and refresh to see updates
+
+### Testing
+Test your press kit across:
+- Different browsers (Chrome, Firefox, Safari)
+- Various screen sizes
+- Both desktop and mobile devices
 
 ## 📄 License
 
-Please contact Team Comet for usage rights and permissions regarding game assets and materials.
+This project is licensed under the MIT License - see below for details:
+
+```
+MIT License
+
+Copyright (c) 2024 Team Comet
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+## 💡 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
