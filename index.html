@@ -31,7 +31,7 @@
 
         .banner {
             width: 100%;
-            background: #f8f9fa;
+            background: #f5f5f5;
             text-align: center;
         }
 
@@ -83,7 +83,7 @@
         }
 
         .factsheet {
-            background: #f8f9fa;
+            background: #f5f5f5;
             padding: 20px;
             border-radius: 4px;
         }
@@ -145,14 +145,20 @@
         .article-quote {
             margin-bottom: 20px;
             padding: 20px;
-            background: #f8f9fa;
+            background: #f5f5f5;
             border-radius: 4px;
+        }
+
+        .additional-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
         }
 
         .additional-link {
             margin-bottom: 20px;
             padding: 20px;
-            background: #f8f9fa;
+            background: #f5f5f5;
             border-radius: 4px;
         }
 
@@ -164,8 +170,6 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            padding: 20px;
-            border-radius: 4px;
         }
 
         .team-member {
@@ -213,6 +217,10 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .additional-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .nav-links {
                 font-size: 0.9em;
             }
@@ -220,6 +228,10 @@
 
         @media (max-width: 480px) {
             .images-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .additional-links {
                 grid-template-columns: 1fr;
             }
         }
@@ -343,19 +355,26 @@
 
         <section id="links">
             <h2>Additional Links</h2>
-            <div class="additional-link">
-                <h3>Catalog Page</h3>
-                <p>Official Storefront for the Playdate</p>
-                <a href="https://play.date/games/comet/" target="_blank">play.date/games/comet/</a>
-            </div>
-            <div class="additional-link">
-                <h3>Development Log</h3>
-                <p>Development Posts created alongside the game</p>
-                <a href="https://guv-bubbs.itch.io/comet/devlog" target="_blank">guv-bubbs.itch.io/comet/devlog</a>
+            <div class="additional-links">
+                <div class="additional-link">
+                    <h3>Catalog Page</h3>
+                    <p>Official Storefront for the Playdate</p>
+                    <a href="https://play.date/games/comet/" target="_blank">play.date/games/comet/</a>
+                </div>
+                <div class="additional-link">
+                    <h3>Development Log</h3>
+                    <p>Development Posts created alongside the game</p>
+                    <a href="https://guv-bubbs.itch.io/comet/devlog" target="_blank">guv-bubbs.itch.io/comet/devlog</a>
+                </div>
+                <div class="additional-link">
+                    <h3>Press Kit</h3>
+                    <p>Download our press kit</p>
+                    <a href="#" target="_blank">Coming Soon</a>
+                </div>
             </div>
         </section>
 
-        <div class="team-contact" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px;">
+        <div class="team-contact">
             <section id="team">
                 <div style="background-color: #f5f5f5; padding: 30px; border-radius: 8px;">
                     <h2>Team</h2>
