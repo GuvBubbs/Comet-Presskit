@@ -30,14 +30,18 @@
         }
 
         .banner {
-            width: 100%;
-            background: #f5f5f5;
-            text-align: center;
-            line-height: 0;
-        }
+    width: 100%;
+    background: #322f28;
+    text-align: center;
+    line-height: 0;
+    display: flex;
+    justify-content: center; /* Center the content */
+    background-color: #322f28; /* Or any color that matches your banner's edges */
+}
 
 .banner img {
-    max-width: 100%;
+    max-width: 1200px;
+    width: 100%;
     height: auto;
     display: block;
 }
@@ -323,7 +327,7 @@
                         </div>
                     </dd>
 
-                    <dt>Contact Email</dt>
+                    <dt>Press Contact Email</dt>
                     <dd>
                         <div style="display: flex; align-items: center; gap: 1em;">
                             <i class="fa-solid fa-envelope" style="width: 20px; color: black;"></i>
@@ -392,7 +396,13 @@
         </section>
 
         <section id="images">
-            <h2>Images & Screenshots</h2>
+            <h2>Images</h2>
+            <a href="#" style="text-decoration: none; display: block; background: #257048; padding: 10px 15px; border-radius: 4px; margin-bottom: 20px; color: white; font-weight: bold;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-download"></i>
+                    <p style="margin: 0;">Download assets</p>
+                </div>
+            </a>
             <div class="images-grid">
                 <img src="images/gameplay/gameplay-1.gif" alt="Comet Gameplay" style="border: 1px solid #ddd;">
                 <img src="images/gameplay/lena-character.gif" alt="Lena Character" style="border: 1px solid #ddd;">
