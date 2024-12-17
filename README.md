@@ -1,6 +1,6 @@
-# Presskit-3
+# Simple GitHub Press Kit Page
 
-A clean, responsive press kit template for games. This template provides a single-page website with all the essential elements needed for a game's press coverage.
+A clean, responsive press kit template that can be hosted directly on GitHub Pages. This template provides a single-page website with all the essential elements needed for a game's press coverage.
 
 ## 🚀 Quick Start
 
@@ -12,7 +12,7 @@ A clean, responsive press kit template for games. This template provides a singl
 ## 📁 Structure
 
 ```
-presskit-3/
+simple-github-presskit-page/
 ├── images/
 │   ├── awards/      # Award badges and trophies
 │   ├── banner/      # Header banner images
@@ -113,7 +113,7 @@ This project is licensed under the MIT License - see below for details:
 ```
 MIT License
 
-Copyright (c) 2024 Team Comet
+Copyright (c) 2024
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
