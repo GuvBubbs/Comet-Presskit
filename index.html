@@ -32,32 +32,87 @@
 
         .banner {
             width: 100%;
+            position: relative;
+            height: 600px; /* Default height for 1440p+ */
+            overflow: hidden;
             background: #322f28;
-            text-align: center;
-            line-height: 0;
             display: flex;
-            justify-content: center; /* Center the content */
-            background-color: #322f28; /* Or any color that matches your banner's edges */
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
         }
 
         .banner img {
-            max-width: 1200px;
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 40%;
         }
 
+        /* 1440p breakpoint */
+        @media (max-width: 2560px) {
+            .banner {
+                height: 400px;
+            }
+            .banner img {
+                object-position: center 80%;
+            }
+        }
+
+        /* 1080p breakpoint */
+        @media (max-width: 1920px) {
+            .banner {
+                height: 350px;
+            }
+            .banner img {
+                object-position: center 80%;
+            }
+        }
+
+        /* Large tablet/small desktop breakpoint */
+        @media (max-width: 1024px) {
+            .banner {
+                height: 300px;
+            }
+            .banner img {
+                object-position: center 80%;
+            }
+        }
+
+        /* Tablet breakpoint */
+        @media (max-width: 820px) {
+            .banner {
+                height: 250px;
+            }
+            .banner img {
+                object-position: center 80%;
+            }
+        }
+
+        /* Mobile breakpoint */
+        @media (max-width: 480px) {
+            .banner {
+                height: 200px;
+            }
+            .banner img {
+                object-position: center 80%;
+            }
+        }
+        
         nav {
             background: white;
             border-bottom: 1px solid #322f28;
             padding: 15px 0;
             width: 100%;
+            position: relative; /* Add this */
+            z-index: 100; /* Add this */
         }
 
         nav.fixed {
             position: fixed;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid #322f28; /* Explicitly add the border here too */
         }
 
         .nav-content {
@@ -371,7 +426,7 @@
 </head>
 <body>
     <div class="banner" id="top">
-        <img src="images/banner/banner.jpeg" alt="Comet Banner">
+        <img src="images/banner/banner.png" alt="Comet Banner">
     </div>
 
     <nav id="mainNav">
