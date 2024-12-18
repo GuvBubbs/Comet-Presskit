@@ -22,6 +22,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #333;
+            font-display: swap;
         }
     
         .container {
@@ -445,6 +446,14 @@
                 font-size: 0.9em;
             }
         }
+
+        .images-grid img[src$=".gif"] {
+            visibility: hidden;
+        }
+
+        .images-grid img[src$=".gif"].visible {
+            visibility: visible;
+        }
     
         /* Mobile breakpoint */
         @media (max-width: 480px) {
@@ -591,14 +600,14 @@
                     <h3 class="video-title">Reveal Trailer</h3>
                     <div class="video-container" onclick="openVideoLightbox('https://www.youtube.com/embed/b_WMclAu_pE?autoplay=1')">
                         <div class="video-overlay"></div>
-                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/b_WMclAu_pE" frameborder="0" allowfullscreen></iframe>
+                        <iframe loading="lazy" width="100%" height="315" src="https://www.youtube.com/embed/b_WMclAu_pE" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div class="video-item">
                     <h3 class="video-title">Spotlight Trailer</h3>
                     <div class="video-container" onclick="openVideoLightbox('https://www.youtube.com/embed/kXEdy79ueLw?autoplay=1')">
                         <div class="video-overlay"></div>
-                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/kXEdy79ueLw" frameborder="0" allowfullscreen></iframe>
+                        <iframe loading="lazy" width="100%" height="315" src="https://www.youtube.com/embed/kXEdy79ueLw" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -613,18 +622,18 @@
                 </div>
             </a>
             <div class="images-grid">
-                <img src="images/gameplay/gameplay-1.gif" alt="Comet Gameplay" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
-                <img src="images/gameplay/lena-character.gif" alt="Workshop Scene" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
-                <img src="images/gameplay/game-scene.gif" alt="Game Scene" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
-                <img src="images/gameplay/workshop-scene.gif" alt="Game Scene" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
-                <img src="images/gameplay/gameplay-2.gif" alt="Lena Character" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
-                <img src="images/logos/game-icon.png" alt="Comet Icon" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
-                <img src="images/logos/comet-logo-transparent.png" alt="Transparent Logo" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
-                <img src="images/logos/comet-logo-1bit.png" alt="1Bit Logo" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
-                <img src="images/logos/comet-logo.png" alt="Standard Logo" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
-                <img src="images/artwork/key-art.png" alt="Key art" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
-                <img src="images/artwork/key-art-1bit.png" alt="1 Bit Keyart" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
-                <img src="images/artwork/cinematic-art.png" alt="Cinematic Art" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img loading="lazy" src="images/gameplay/gameplay-1.gif" alt="Comet Gameplay" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img loading="lazy" src="images/gameplay/lena-character.gif" alt="Workshop Scene" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img loading="lazy" src="images/gameplay/game-scene.gif" alt="Game Scene" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img loading="lazy" src="images/gameplay/workshop-scene.gif" alt="Game Scene" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img loading="lazy" src="images/gameplay/gameplay-2.gif" alt="Lena Character" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img loading="lazy" src="images/logos/game-icon.png" alt="Comet Icon" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img loading="lazy" src="images/logos/comet-logo-transparent.png" alt="Transparent Logo" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img loading="lazy" src="images/logos/comet-logo-1bit.png" alt="1Bit Logo" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img loading="lazy" src="images/logos/comet-logo.png" alt="Standard Logo" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img loading="lazy" src="images/artwork/key-art.png" alt="Key art" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img loading="lazy" src="images/artwork/key-art-1bit.png" alt="1 Bit Keyart" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img loading="lazy" src="images/artwork/cinematic-art.png" alt="Cinematic Art" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
             </div>
             <p class="image-note">All images are available for press use. Please credit Team Comet when using these assets.</p>
         </section>
@@ -771,6 +780,7 @@
                 }
             });
     
+            // Smooth scroll functionality
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -788,6 +798,30 @@
             // Image Lightbox functionality
             let currentImageIndex = 0;
             const images = document.querySelectorAll('.images-grid img');
+    
+            // Intersection Observer for GIFs
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+    
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.src.endsWith('.gif')) {
+                            img.classList.add('visible');
+                        }
+                        observer.unobserve(img); // Stop observing once visible
+                    }
+                });
+            }, observerOptions);
+    
+            // Observe all GIF images
+            document.querySelectorAll('.images-grid img[src$=".gif"]').forEach(img => {
+                observer.observe(img);
+            });
     
             window.openLightbox = function(img) {
                 const lightbox = document.getElementById('lightbox');
@@ -821,7 +855,6 @@
     
             // Close on clicking outside the image
             document.getElementById('lightbox').addEventListener('click', function(e) {
-                // Check if the click was on the lightbox background (not the image or navigation controls)
                 if (e.target.classList.contains('lightbox') || e.target.classList.contains('lightbox-content')) {
                     closeLightbox();
                 }
@@ -848,7 +881,6 @@
     
             // Close video lightbox on outside click
             document.getElementById('video-lightbox').addEventListener('click', function(e) {
-                // Check if the click was on the lightbox background (not the video)
                 if (e.target.classList.contains('lightbox') || e.target.classList.contains('video-lightbox-content')) {
                     const videoFrame = document.getElementById('video-lightbox-frame');
                     this.style.display = 'none';
