@@ -237,6 +237,74 @@
             font-size: 0.9em;
         }
         
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+        }
+
+        .lightbox-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .lightbox img {
+            max-height: 90vh;
+            max-width: 90vw;
+            object-fit: contain;
+        }
+
+        .close, .prev, .next {
+            color: white;
+            position: fixed;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            transition: 0.2s ease;
+        }
+
+        .close {
+            right: 25px;
+            top: 15px;
+        }
+
+        .prev, .next {
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 16px;
+        }
+
+        .prev {
+            left: 25px;
+        }
+
+        .next {
+            right: 25px;
+        }
+
+        .close:hover, .prev:hover, .next:hover {
+            color: #46D68B;
+        }
+
+        .caption {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            padding: 10px;
+            font-size: 1.1em;
+        }
 
         @media (max-width: 768px) {
             .split-view {
@@ -411,18 +479,18 @@
                 </div>
             </a>
             <div class="images-grid">
-                <img src="images/gameplay/gameplay-1.gif" alt="Comet Gameplay" style="border: 1px solid #ddd;">
-                <img src="images/gameplay/lena-character.gif" alt="Lena Character" style="border: 1px solid #ddd;">
-                <img src="images/gameplay/game-scene.gif" alt="Game Scene" style="border: 1px solid #ddd;">
-                <img src="images/gameplay/workshop-scene.gif" alt="Workshop Scene" style="border: 1px solid #ddd;">
-                <img src="images/gameplay/gameplay-2.gif" alt="Gameplay Scene" style="border: 1px solid #ddd;">
-                <img src="images/logos/game-icon.png" alt="Comet Icon" style="border: 1px solid #ddd;">
-                <img src="images/logos/comet-logo-transparent.png" alt="Transparent Logo" style="border: 1px solid #ddd;">
-                <img src="images/logos/comet-logo-1bit.png" alt="1Bit Logo" style="border: 1px solid #ddd;">
-                <img src="images/logos/comet-logo.png" alt="Standard Logo" style="border: 1px solid #ddd;">
-                <img src="images/artwork/key-art.png" alt="Key art" style="border: 1px solid #ddd;">
-                <img src="images/artwork/key-art-1bit.png" alt="1 Bit Keyart" style="border: 1px solid #ddd;">
-                <img src="images/artwork/cinematic-art.png" alt="Cinematic Art" style="border: 1px solid #ddd;">
+                <img src="images/gameplay/gameplay-1.gif" alt="Comet Gameplay" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img src="images/gameplay/lena-character.gif" alt="Workshop Scene" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img src="images/gameplay/game-scene.gif" alt="Game Scene" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img src="images/gameplay/workshop-scene.gif" alt="Game Scene" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img src="images/gameplay/gameplay-2.gif" alt="Lena Character" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img src="images/logos/game-icon.png" alt="Comet Icon" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img src="images/logos/comet-logo-transparent.png" alt="Transparent Logo" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img src="images/logos/comet-logo-1bit.png" alt="1Bit Logo" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img src="images/logos/comet-logo.png" alt="Standard Logo" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img src="images/artwork/key-art.png" alt="Key art" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img src="images/artwork/key-art-1bit.png" alt="1 Bit Keyart" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
+                <img src="images/artwork/cinematic-art.png" alt="Cinematic Art" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
             </div>
             <p class="image-note">All images are available for press use. Please credit Team Comet when using these assets.</p>
         </section>
@@ -517,32 +585,96 @@
     </div>
 
     <script>
-        const nav = document.getElementById('mainNav');
-        const banner = document.querySelector('.banner');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY >= banner.offsetHeight) {
-                nav.classList.add('fixed');
-                document.body.style.paddingTop = nav.offsetHeight + 'px';
-            } else {
-                nav.classList.remove('fixed');
-                document.body.style.paddingTop = '0';
-            }
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation
+            const nav = document.getElementById('mainNav');
+            const banner = document.querySelector('.banner');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY >= banner.offsetHeight) {
+                    nav.classList.add('fixed');
+                    document.body.style.paddingTop = nav.offsetHeight + 'px';
+                } else {
+                    nav.classList.remove('fixed');
+                    document.body.style.paddingTop = '0';
+                }
+            });
+    
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+    
+            // Lightbox functionality
+            let currentImageIndex = 0;
+            const images = document.querySelectorAll('.images-grid img');
+    
+            window.openLightbox = function(img) {
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImg = document.getElementById('lightbox-img');
                 
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                currentImageIndex = Array.from(images).indexOf(img);
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                document.querySelector('.caption').textContent = img.alt;
+                lightbox.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+    
+            function closeLightbox() {
+                document.getElementById('lightbox').style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+    
+            function changeImage(direction) {
+                currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+                const newImage = images[currentImageIndex];
+                document.getElementById('lightbox-img').src = newImage.src;
+                document.getElementById('lightbox-img').alt = newImage.alt;
+                document.querySelector('.caption').textContent = newImage.alt;
+            }
+    
+            // Event Listeners
+            document.querySelector('.close').addEventListener('click', closeLightbox);
+            document.querySelector('.prev').addEventListener('click', () => changeImage(-1));
+            document.querySelector('.next').addEventListener('click', () => changeImage(1));
+    
+            // Close on clicking outside the image
+            document.getElementById('lightbox').addEventListener('click', function(e) {
+                if (e.target.id === 'lightbox') {
+                    closeLightbox();
+                }
+            });
+    
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (document.getElementById('lightbox').style.display === 'block') {
+                    if (e.key === 'Escape') closeLightbox();
+                    if (e.key === 'ArrowLeft') changeImage(-1);
+                    if (e.key === 'ArrowRight') changeImage(1);
                 }
             });
         });
     </script>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <span class="prev">&#10094;</span>
+        <span class="next">&#10095;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+        </div>
+        <div class="caption"></div>
+    </div>
+
 </body>
 </html>
