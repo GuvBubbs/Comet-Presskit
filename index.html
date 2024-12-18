@@ -631,7 +631,7 @@
             lightbox.style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
-
+    
         document.addEventListener('DOMContentLoaded', function() {
             // Navigation
             const nav = document.getElementById('mainNav');
@@ -646,7 +646,7 @@
                     document.body.style.paddingTop = '0';
                 }
             });
-
+    
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -660,11 +660,11 @@
                     }
                 });
             });
-
+    
             // Image Lightbox functionality
             let currentImageIndex = 0;
             const images = document.querySelectorAll('.images-grid img');
-
+    
             window.openLightbox = function(img) {
                 const lightbox = document.getElementById('lightbox');
                 const lightboxImg = document.getElementById('lightbox-img');
@@ -676,12 +676,12 @@
                 lightbox.style.display = 'block';
                 document.body.style.overflow = 'hidden';
             }
-
+    
             function closeLightbox() {
                 document.getElementById('lightbox').style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
-
+    
             function changeImage(direction) {
                 currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
                 const newImage = images[currentImageIndex];
@@ -689,19 +689,20 @@
                 document.getElementById('lightbox-img').alt = newImage.alt;
                 document.querySelector('.caption').textContent = newImage.alt;
             }
-
+    
             // Image Lightbox Event Listeners
             document.querySelector('.close').addEventListener('click', closeLightbox);
             document.querySelector('.prev').addEventListener('click', () => changeImage(-1));
             document.querySelector('.next').addEventListener('click', () => changeImage(1));
-
+    
             // Close on clicking outside the image
             document.getElementById('lightbox').addEventListener('click', function(e) {
-                if (e.target.id === 'lightbox') {
+                // Check if the click was on the lightbox background (not the image or navigation controls)
+                if (e.target.classList.contains('lightbox') || e.target.classList.contains('lightbox-content')) {
                     closeLightbox();
                 }
             });
-
+    
             // Keyboard navigation for images
             document.addEventListener('keydown', function(e) {
                 if (document.getElementById('lightbox').style.display === 'block') {
@@ -710,7 +711,7 @@
                     if (e.key === 'ArrowRight') changeImage(1);
                 }
             });
-
+    
             // Video Lightbox Event Listeners
             document.querySelector('#video-lightbox .close').addEventListener('click', function() {
                 const lightbox = document.getElementById('video-lightbox');
@@ -720,17 +721,18 @@
                 videoFrame.src = ''; // Clear the video source
                 document.body.style.overflow = 'auto';
             });
-
+    
             // Close video lightbox on outside click
             document.getElementById('video-lightbox').addEventListener('click', function(e) {
-                if (e.target.id === 'video-lightbox') {
+                // Check if the click was on the lightbox background (not the video)
+                if (e.target.classList.contains('lightbox') || e.target.classList.contains('video-lightbox-content')) {
                     const videoFrame = document.getElementById('video-lightbox-frame');
                     this.style.display = 'none';
                     videoFrame.src = ''; // Clear the video source
                     document.body.style.overflow = 'auto';
                 }
             });
-
+    
             // Keyboard navigation for video
             document.addEventListener('keydown', function(e) {
                 if (document.getElementById('video-lightbox').style.display === 'block') {
@@ -744,7 +746,7 @@
                 }
             });
         });
-     </script>
+    </script>
 
     <div id="lightbox" class="lightbox">
         <span class="close">&times;</span>
