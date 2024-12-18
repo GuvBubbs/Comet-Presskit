@@ -30,25 +30,25 @@
         }
 
         .banner {
-    width: 100%;
-    background: #322f28;
-    text-align: center;
-    line-height: 0;
-    display: flex;
-    justify-content: center; /* Center the content */
-    background-color: #322f28; /* Or any color that matches your banner's edges */
-}
+            width: 100%;
+            background: #322f28;
+            text-align: center;
+            line-height: 0;
+            display: flex;
+            justify-content: center; /* Center the content */
+            background-color: #322f28; /* Or any color that matches your banner's edges */
+        }
 
-.banner img {
-    max-width: 1200px;
-    width: 100%;
-    height: auto;
-    display: block;
-}
+        .banner img {
+            max-width: 1200px;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
 
         nav {
             background: white;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #322f28;
             padding: 15px 0;
             width: 100%;
         }
@@ -141,6 +141,12 @@
             height: auto;
             border-radius: 4px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease; /* Add smooth transition */
+        }
+
+        .images-grid img:hover {
+            transform: scale(1.02); /* Subtle zoom of 5% */
+            cursor: pointer; /* Shows clickable cursor */
         }
 
         .image-note {
