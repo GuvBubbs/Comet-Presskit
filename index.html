@@ -10,19 +10,22 @@
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 70px;
+            overscroll-behavior: contain;    /* Add this */
+            -webkit-tap-highlight-color: transparent; /* Add this */
         }
-    
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-    
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #333;
-            font-display: swap;
+            -webkit-touch-callout: none;  /* Add this */
+            touch-action: manipulation;    /* Add this */
         }
     
         .container {
@@ -96,6 +99,11 @@
         .nav-links a {
             color: #666;
             text-decoration: none;
+            padding: 2px 2px;  /* Reduced padding */
+            display: inline-flex;       
+            align-items: center;        
+            justify-content: center;
+            position: relative;
         }
     
         /* Content Layout */
@@ -201,7 +209,26 @@
         .additional-link h3 {
             margin-bottom: 5px;
         }
-    
+        
+        button, 
+        .download-assets-btn,
+        .additional-link {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button:active,
+        .download-assets-btn:active,
+        .additional-link:active {
+            transform: scale(0.98);
+        }
+
+        /* Improve scroll momentum on iOS */
+        .container {
+            -webkit-overflow-scrolling: touch;
+        }
+
         .team-contact {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -420,12 +447,16 @@
                 gap: 15px;
                 text-align: center;
             }
+
             .nav-links.active {
                 display: flex;
             }
+
             .nav-links a {
-                padding: 10px 0;
+                padding: 16px;  /* Larger padding for touch */
                 width: 100%;
+                min-height: 44px;  /* Touch target size */
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             }
             .nav-content .divider {
                 display: none;
@@ -437,8 +468,27 @@
                 grid-template-columns: 1fr;
             }
             .images-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr);  /* EXISTING - KEEP THIS */
+                gap: 12px;  /* NEW */
             }
+
+            .images-grid img {
+                border-radius: 8px;  /* NEW */
+                min-height: 120px;   /* NEW */
+                object-fit: cover;   /* NEW */
+            }
+        
+            .video-container {
+                aspect-ratio: 16/9;
+                width: 100%;
+            }
+
+            .video-lightbox-content iframe {
+                width: 100vw;
+                height: 56.25vw; /* Maintain 16:9 aspect ratio */
+                max-height: 90vh;
+            }
+        
             .additional-links {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -465,6 +515,12 @@
             }
             .images-grid {
                 grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .images-grid img {
+                border-radius: 8px;           
+                min-height: 120px;            
+                object-fit: cover;            
             }
             .additional-links {
                 grid-template-columns: 1fr;
@@ -615,12 +671,13 @@
 
         <section id="images">
             <h2>Images</h2>
-            <a href="#" style="text-decoration: none; display: block; background: #257048; padding: 10px 15px; border-radius: 4px; margin-bottom: 20px; color: white; font-weight: bold;">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <i class="fas fa-download"></i>
-                    <p style="margin: 0;">Download assets</p>
-                </div>
-            </a>
+            <a href="images/Assets.zip" download 
+                style="text-decoration: none; display: block; background: #257048; padding: 10px 15px; border-radius: 4px; margin-bottom: 20px; color: white; font-weight: bold;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-download"></i>
+                        <p style="margin: 0;">Download assets</p>
+                    </div>
+                </a>
             <div class="images-grid">
                 <img loading="lazy" src="images/gameplay/gameplay-1.gif" alt="Comet Gameplay" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
                 <img loading="lazy" src="images/gameplay/lena-character.gif" alt="Workshop Scene" style="border: 1px solid #ddd;" onclick="openLightbox(this)">
@@ -752,7 +809,10 @@
             navLinks.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     if (window.innerWidth <= 820) {
-                        navLinks.classList.remove('active');
+                        // Add a slight delay to allow the smooth scroll to start
+                        setTimeout(() => {
+                            navLinks.classList.remove('active');
+                        }, 100);
                     }
                 });
             });
