@@ -434,6 +434,15 @@
             z-index: 1;
         }
     
+        .info-box {
+            background-color: #f5f5f5;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
         /* Media Queries */
         /* 1440p breakpoint */
         @media (max-width: 2560px) {
@@ -598,9 +607,14 @@
             .additional-links {
                 grid-template-columns: 1fr;
             }
-        }
 
-        
+            .info-box {
+                padding: 20px;
+                border-radius: 4px;
+                margin: 0;
+            }
+        }
+                
     </style>
 </head>
 <body>
@@ -812,7 +826,7 @@
 
         <div class="team-contact">
             <section id="team">
-                <div style="background-color: #f5f5f5; padding: 30px; border-radius: 8px;">
+                <div class="info-box">
                     <h2>Team</h2>
                     <div class="team-member">
                         <i class="fas fa-user"></i>
@@ -836,9 +850,9 @@
                     </div>
                 </div>
             </section>
-
+        
             <section id="contact">
-                <div style="background-color: #f5f5f5; padding: 30px; border-radius: 8px;">
+                <div class="info-box">
                     <h2>Contact</h2>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
