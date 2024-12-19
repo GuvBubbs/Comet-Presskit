@@ -467,6 +467,28 @@
             opacity: 0.8;
         }
 
+        .loading-spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #257048;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        #video-lightbox-frame {
+            transition: opacity 0.3s ease;
+        }
+
         .info-box {
             background-color: #f5f5f5;
             padding: 30px;
@@ -918,24 +940,47 @@
     <script>
         // Define video lightbox function globally
         window.openVideoLightbox = function(videoSrc) {
-            console.log('Opening video lightbox with:', videoSrc);
             const lightbox = document.getElementById('video-lightbox');
             const videoFrame = document.getElementById('video-lightbox-frame');
+            const spinner = document.createElement('div');
+            spinner.className = 'loading-spinner';
             
-            videoFrame.src = videoSrc;
             lightbox.style.display = 'block';
             document.body.style.overflow = 'hidden';
+            
+            // Show loading spinner
+            videoFrame.parentElement.insertBefore(spinner, videoFrame);
+            videoFrame.style.opacity = '0';
+            
+            // Extract video ID from src
+            const videoId = videoSrc.match(/embed\/(.*?)\?/)[1];
+            
+            // If we have a preloaded version, use it
+            if (window.preloadedVideos && window.preloadedVideos.has(videoId)) {
+                const preloadedFrame = window.preloadedVideos.get(videoId);
+                videoFrame.src = preloadedFrame.src + '&autoplay=1';
+                document.body.removeChild(preloadedFrame);
+                window.preloadedVideos.delete(videoId);
+            } else {
+                videoFrame.src = videoSrc;
+            }
+            
+            // When video is loaded
+            videoFrame.onload = function() {
+                spinner.remove();
+                videoFrame.style.opacity = '1';
+            };
         }
-    
+
         document.addEventListener('DOMContentLoaded', function() {
             // Mobile menu functionality
             const menuToggle = document.querySelector('.menu-toggle');
             const navLinks = document.querySelector('.nav-links');
-    
+
             menuToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
             });
-    
+
             // Close mobile menu when a link is clicked
             navLinks.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
@@ -947,7 +992,7 @@
                     }
                 });
             });
-    
+
             // Close mobile menu when clicking outside
             document.addEventListener('click', (e) => {
                 if (window.innerWidth <= 820 && 
@@ -956,7 +1001,7 @@
                     navLinks.classList.remove('active');
                 }
             });
-    
+
             // Navigation
             const nav = document.getElementById('mainNav');
             const banner = document.querySelector('.banner');
@@ -970,7 +1015,7 @@
                     document.body.style.paddingTop = '0';
                 }
             });
-    
+
             // Smooth scroll functionality
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -985,18 +1030,18 @@
                     }
                 });
             });
-    
+
             // Image Lightbox functionality
             let currentImageIndex = 0;
             const images = document.querySelectorAll('.images-grid img');
-    
+
             // Intersection Observer for GIFs
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
                 threshold: 0.1
             };
-    
+
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1008,12 +1053,12 @@
                     }
                 });
             }, observerOptions);
-    
+
             // Observe all GIF images
             document.querySelectorAll('.images-grid img[src$=".gif"]').forEach(img => {
                 observer.observe(img);
             });
-    
+
             window.openLightbox = function(img) {
                 const lightbox = document.getElementById('lightbox');
                 const lightboxImg = document.getElementById('lightbox-img');
@@ -1025,12 +1070,12 @@
                 lightbox.style.display = 'block';
                 document.body.style.overflow = 'hidden';
             }
-    
+
             function closeLightbox() {
                 document.getElementById('lightbox').style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
-    
+
             function changeImage(direction) {
                 currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
                 const newImage = images[currentImageIndex];
@@ -1038,19 +1083,19 @@
                 document.getElementById('lightbox-img').alt = newImage.alt;
                 document.querySelector('.caption').textContent = newImage.alt;
             }
-    
+
             // Image Lightbox Event Listeners
             document.querySelector('.close').addEventListener('click', closeLightbox);
             document.querySelector('.prev').addEventListener('click', () => changeImage(-1));
             document.querySelector('.next').addEventListener('click', () => changeImage(1));
-    
+
             // Close on clicking outside the image
             document.getElementById('lightbox').addEventListener('click', function(e) {
                 if (e.target.classList.contains('lightbox') || e.target.classList.contains('lightbox-content')) {
                     closeLightbox();
                 }
             });
-    
+
             // Keyboard navigation for images
             document.addEventListener('keydown', function(e) {
                 if (document.getElementById('lightbox').style.display === 'block') {
@@ -1059,7 +1104,7 @@
                     if (e.key === 'ArrowRight') changeImage(1);
                 }
             });
-    
+
             // Video Lightbox Event Listeners
             document.querySelector('#video-lightbox .close').addEventListener('click', function() {
                 const lightbox = document.getElementById('video-lightbox');
@@ -1069,7 +1114,7 @@
                 videoFrame.src = ''; // Clear the video source
                 document.body.style.overflow = 'auto';
             });
-    
+
             // Close video lightbox on outside click
             document.getElementById('video-lightbox').addEventListener('click', function(e) {
                 if (e.target.classList.contains('lightbox') || e.target.classList.contains('video-lightbox-content')) {
@@ -1079,7 +1124,7 @@
                     document.body.style.overflow = 'auto';
                 }
             });
-    
+
             // Keyboard navigation for video
             document.addEventListener('keydown', function(e) {
                 if (document.getElementById('video-lightbox').style.display === 'block') {
@@ -1093,6 +1138,29 @@
                 }
             });
         });
+
+        // Preload videos after page load
+        window.onload = function() {
+            // After everything else has loaded, preload video iframes
+            const videoContainers = document.querySelectorAll('.video-container');
+            videoContainers.forEach(container => {
+                const onclick = container.getAttribute('onclick');
+                const videoSrc = onclick.match(/'(.*?)'/)[1];
+                const videoId = videoSrc.match(/embed\/(.*?)\?/)[1];
+                
+                setTimeout(() => {
+                    // Create hidden iframe
+                    const hiddenFrame = document.createElement('iframe');
+                    hiddenFrame.style.display = 'none';
+                    hiddenFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=0`;
+                    document.body.appendChild(hiddenFrame);
+                    
+                    // Store for later use
+                    if (!window.preloadedVideos) window.preloadedVideos = new Map();
+                    window.preloadedVideos.set(videoId, hiddenFrame);
+                }, 1000); // 1 second delay after page load before starting preload
+            });
+        };
     </script>
 
     <div id="lightbox" class="lightbox">
