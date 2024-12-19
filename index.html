@@ -109,7 +109,7 @@
             padding: 15px 0;
             width: 100%;
             position: relative;
-            z-index: 100;
+            z-index: 1000;
         }
     
         nav.fixed {
@@ -572,6 +572,13 @@
                 border-bottom: 1px solid #322f28;
                 gap: 0px;
                 text-align: center;
+                z-index: 1000;
+            }
+
+            nav.fixed .nav-links {
+                position: fixed;
+                top: 59px;  /* This should match your nav height */
+                width: 100%;
             }
 
             .nav-links.active {
