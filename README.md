@@ -1,139 +1,97 @@
 # Simple GitHub Press Kit Page
 
-A clean, responsive press kit template that can be hosted directly on GitHub Pages. This template provides a single-page website with all the essential elements needed for a game's press coverage.
+A minimalist, single-file press kit template designed specifically for GitHub Pages. Get your project's press kit online in minutes with zero configuration required.
 
-## 🚀 Quick Start
+## ✨ Key Features
+
+- **Single File Setup**: Everything is contained in one `index.html` file - no build process, no dependencies
+- **GitHub Pages Ready**: Deploy instantly by enabling GitHub Pages in your repository settings
+- **Zero Cost Hosting**: Takes advantage of GitHub's free hosting services
+- **No Maintenance Required**: Static design means no security updates or server maintenance needed
+
+## 🚀 Quick Start (2 Minutes)
 
 1. Fork this repository
-2. Replace the example content in `index.html` with your game's information
-3. Add your images to the appropriate directories
-4. Deploy using GitHub Pages or your preferred hosting
+2. Edit `index.html` with your project information
+3. Enable GitHub Pages in your repository settings
+4. Your press kit is live at `yourusername.github.io/Simple-Github-Presskit-Page`
 
-## 📁 Structure
+## 🎯 Built for Simplicity
 
+### Easy Content Updates
+- All content is in one HTML file
+- Clearly marked sections for each type of content
+- Simple text editing - no coding knowledge required
+- Update live site by just editing and committing changes
+
+### Organized Asset Structure
 ```
 simple-github-presskit-page/
 ├── images/
-│   ├── awards/      # Award badges and trophies
-│   ├── banner/      # Header banner images
-│   ├── logos/       # Game logos in various formats
-│   ├── promo/       # Key art and promotional images
-│   └── screenshots/ # Gameplay screenshots and GIFs
-└── index.html       # Main press kit webpage
+│   ├── awards/      # Award badges and recognition
+│   ├── banner/      # Header images
+│   ├── logos/       # Project logos
+│   ├── promo/       # Promotional art
+│   └── screenshots/ # Project screenshots
+└── index.html       # All content in one file
 ```
 
-## 🔧 Features
+### Smart Features
+- Responsive design works on all devices
+- Automatic navigation generation
+- Image grid with automatic sizing
+- Smooth scrolling between sections
 
-### Navigation
-- Sticky navigation bar with smooth scrolling
-- Automatically highlights current section
-- Mobile-responsive dropdown menu
+## 💼 Professional Components
 
-### Image Management
-- Responsive image grid
-- Automatic thumbnail generation
-- Support for both static images and GIFs
-- Organized directory structure for different asset types
+- Factsheet for key information
+- Media kit with downloadable assets
+- Team member showcase
+- Press contact information
+- Awards and recognition section
+- Social media links
+- Additional resources section
 
-### Layout
-- Two-column layout for desktop
-- Single-column responsive layout for mobile
-- Flexible grid system for screenshots and promotional images
+## 📱 Mobile-First Design
 
-### Components
-- Factsheet section for key information
-- Embedded video support
-- Team member listings
-- Contact information with social links
-- Awards showcase
-- Additional links section
+- Adapts to any screen size
+- Touch-friendly navigation
+- Fast loading on mobile networks
+- Readable on any device
 
-## 🎨 Customization
+## 🛠 Customization
 
-### Styling
-All styles are contained in the `<style>` tag within `index.html`. The CSS is organized into sections:
-- Base styles and resets
-- Layout components
-- Navigation styles
-- Grid systems
-- Media queries for responsiveness
+### Simple Styling
+All styles are in `index.html` using standard CSS:
+- Easy to read and modify
+- No preprocessors or build tools
+- Organized by component
+- Clear documentation
 
-### Adding Sections
-1. Add a new section to the HTML:
-```html
-<section id="your-section">
-    <h2>Section Title</h2>
-    <div class="content">
-        <!-- Your content here -->
-    </div>
-</section>
-```
+### Adding New Sections
+1. Copy and paste an existing section in `index.html`
+2. Change the content
+3. Navigation updates automatically
 
-2. Add a navigation link:
-```html
-<a href="#your-section">Section Title</a>
-```
-
-## 📱 Responsive Design
-
-The template includes breakpoints for:
-- Desktop (> 768px)
-- Tablet (480px - 768px)
-- Mobile (< 480px)
-
-Key responsive features:
-- Collapsing navigation
-- Adjusting grid layouts
-- Scaling images
-- Reorganizing two-column layout
-
-## 🛠️ Development
-
-### Prerequisites
-- Basic understanding of HTML/CSS
-- Text editor
-- Web browser
-- GitHub account (for forking and deployment)
+## 📚 Documentation
 
 ### Local Development
 1. Clone the repository
-2. Open `index.html` in a browser
+2. Open `index.html` in any browser
 3. Make changes and refresh to see updates
 
-### Testing
-Test your press kit across:
-- Different browsers (Chrome, Firefox, Safari)
-- Various screen sizes
-- Both desktop and mobile devices
+### Deployment
+1. Push changes to GitHub
+2. Site updates automatically
+3. No deployment process needed
 
 ## 📄 License
 
-This project is licensed under the MIT License - see below for details:
+This project is licensed under the MIT License - see the full text in the repository for details.
 
-```
-MIT License
+In other words, anyone can use, modify, and distribute this template however they want, including in commercial projects. 
+You just need to keep the license text and credit the original project.
 
-Copyright (c) 2024
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
-## 💡 Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
