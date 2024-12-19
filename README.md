@@ -89,7 +89,8 @@ All styles are in `index.html` using standard CSS:
 
 This project is licensed under the MIT License - see the full text in the repository for details.
 
-The MIT License is a permissive license that lets anyone use, modify, and distribute this template however they want, including in commercial projects. You just need to keep the license text and credit the original project. It's perfect for templates like this because it lets others freely build upon the work while still protecting the original creators.
+In other words, anyone can use, modify, and distribute this template however they want, including in commercial projects. 
+You just need to keep the license text and credit the original project.
 
 ## 🤝 Contributing
 
