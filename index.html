@@ -649,40 +649,52 @@
             .banner {
                 height: 200px;
             }
+
             .banner img {
                 object-position: center 80%;
             }
+
+            .container {
+                padding: 0 15px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
             .images-grid {
                 grid-template-columns: 1fr;
                 gap: 12px;
             }
+
             .images-grid img {
                 border-radius: 8px;           
                 min-height: 120px;            
                 object-fit: cover;            
             }
+
             .additional-links {
                 grid-template-columns: 1fr;
             }
 
-            .container {
-                padding: 0 15px;  
-            }
-
             .info-box {
-                padding: 15px;
+                padding: 20px;
                 border-radius: 4px;
                 margin: 0;
-                width: calc(100% + 30px);
+                width: 100%;
+                box-sizing: border-box;
             }
-            
+
             .contact-item {
-                word-break: break-word;  
+                word-break: break-word;
+                width: 100%;
+                box-sizing: border-box;
+                padding-right: 15px;
             }
-            
+
             .contact-item a {
-                flex: 1;  
-                min-width: 0;  
+                flex: 1;
+                min-width: 0;
+                overflow-wrap: break-word;
             }
         }
                 
